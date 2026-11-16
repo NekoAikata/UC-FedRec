@@ -319,7 +319,6 @@ class RecHost:
             p.start()
             process.append(p)
 
-        mp.set_start_method('fork', force=True)
         t0 = time()
         for epoch in range(args.epoch):
             t1 = time()
@@ -546,6 +545,7 @@ def generate_one_client(q_to_client, q_to_server, n_users, n_items, model_initia
 def main():
     mp.set_start_method('spawn')
     mp.set_sharing_strategy('file_system')
+    os.makedirs(args.log_path, exist_ok=True)
     logging.basicConfig(level=logging.DEBUG,
                         filename=os.path.join(args.log_path, 'Dist_{}_{}.log'.format('no_pri', args.log_name)),
                         filemode='a')

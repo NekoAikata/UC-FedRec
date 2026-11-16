@@ -46,7 +46,7 @@ def sample_user(user_list, batch_size=args.user_batch_size):
 def privacy_estimator_train(attr, embed):
     if attr == 'gender':
         model = gender_discriminator
-        labels = [0 if att['gender'] is 'M' else 1 for att in data_generator.users_features]
+        labels = [0 if att['gender'] == 'M' else 1 for att in data_generator.users_features]
 
         criterion = nn.BCELoss()
         weight = {0: 1 / (len(labels) - sum(labels)), 1: 1 / sum(labels)}
@@ -108,7 +108,7 @@ def privacy_estimator_train(attr, embed):
     record_loss = []
     for epoch in range(1000):
         model.train()
-        users_batch = sample_user(user_train.tolist(), 2000)
+        users_batch = sample_user(user_train.tolist(), min(2000, len(user_train)))
         # users_batch = user_train[list(WeightedRandomSampler(user_train_weight, 1024))]
         # users_batch = sample_user(list(range(data_generator.n_users)), 3000)
         embed_batch = user_embed[users_batch]
@@ -150,7 +150,7 @@ if __name__ == '__main__':
     #                            data_generator.n_users, data_generator.n_items).to(device)
     # path = '/data/qhuaf/graph_pri/model/test1.pkl'
     # path = '/home/qhuaf/graph_pri/save_model/0.5/with_pri_1_0.5.pkl'
-    path = '/home/qhuaf/graph_pri/save_model/douban/douban_with_pri_0.5_0.5.pkl'
+    path = os.path.join(args.weights_path, args.save_name)
     rec_model = load_rec_model(path,
                                data_generator.n_users, data_generator.n_items).to(device)
     # adj = data_generator.g.adj(etype='ui')
@@ -181,7 +181,7 @@ if __name__ == '__main__':
     rec_model.g_item = g_item
     user_embed, _, _ = rec_model(list(range(data_generator.n_users)), [], [])
     user_embed = user_embed.detach().cpu()
-    privacy_estimator_train('location', user_embed)
-    # privacy_estimator_train('gender', user_embed)
-    # privacy_estimator_train('age', user_embed)
-    # privacy_estimator_train('occupation', user_embed)
+    # privacy_estimator_train('location', user_embed)
+    privacy_estimator_train('gender', user_embed)
+    privacy_estimator_train('age', user_embed)
+    privacy_estimator_train('occupation', user_embed)

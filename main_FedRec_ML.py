@@ -31,7 +31,7 @@ class RecUser:
         self.dp_delta = args.dp_delta
         self.dp_mechanism = args.dp_mechanism
 
-    def train_parameters(self, serial, auxiliary_information, weight, rec_data, pri_data):
+    def train_parameters(self, serial, auxiliary_information, weight, rec_data, pri_data, noise_demand):
         self.rec_data = rec_data
         self.pri_data = pri_data
         self.auxiliary_information_update(auxiliary_information)
@@ -158,19 +158,22 @@ class RecUser:
 
     def add_noise(self, net):
         sensitivity = cal_sensitivity(args.lr, self.dp_clip, 1)
-        if self.dp_mechanism == 'Laplace':
+        mechanism = self.dp_mechanism.lower()
+        if mechanism == 'laplace':
             with torch.no_grad():
                 for k, v in net.named_parameters():
                     noise = Laplace(epsilon=self.dp_eps, sensitivity=sensitivity, size=v.shape)
-                    noise = torch.from_numpy(noise).to(device)
+                    noise = torch.as_tensor(noise, dtype=v.dtype, device=v.device)
                     v += noise
-        elif self.dp_mechanism == 'Gaussian':
+        elif mechanism == 'gaussian':
             with torch.no_grad():
                 for k, v in net.named_parameters():
                     noise = Gaussian_Simple(epsilon=self.dp_eps, delta=self.dp_delta, sensitivity=sensitivity,
                                             size=v.shape)
-                    noise = torch.from_numpy(noise).to(device)
+                    noise = torch.as_tensor(noise, dtype=v.dtype, device=v.device)
                     v += noise
+        else:
+            raise ValueError('Unsupported DP mechanism: {}'.format(self.dp_mechanism))
 
 class RecHost:
     def __init__(self, data_generator):
@@ -178,6 +181,28 @@ class RecHost:
         self.data_generator = data_generator
         self.n_users = data_generator.n_users
         self.n_items = data_generator.n_items
+        self.noise_user_mask = np.zeros(self.n_users, dtype=bool)
+        if args.use_mask_noise:
+            mask_path = os.path.join(
+                args.data_path,
+                args.dataset,
+                'private_user_mask_{}.npy'.format(args.privacy_ratio)
+            )
+            if not os.path.isfile(mask_path):
+                raise FileNotFoundError('Privacy mask not found: {}'.format(mask_path))
+            privacy_mask = np.load(mask_path)
+            if privacy_mask.ndim != 2 or privacy_mask.shape != (self.n_users, 3):
+                raise ValueError(
+                    'Privacy mask must have shape ({}, 3); got {}'.format(
+                        self.n_users, privacy_mask.shape
+                    )
+                )
+            if not np.isin(privacy_mask, [0, 1]).all():
+                raise ValueError('Privacy mask must contain only 0 and 1.')
+            self.noise_user_mask = np.any(privacy_mask == 1, axis=1)
+            print('Adding parameter noise to {} of {} users selected by the privacy mask.'.format(
+                int(self.noise_user_mask.sum()), self.n_users
+            ))
 
         if args.model_name == 'two_side_graph':
             self.global_rec_model = TwoSideGraphModel(args.embed_size, args.layer_size,
@@ -260,7 +285,6 @@ class RecHost:
             p.start()
             process.append(p)
 
-        mp.set_start_method('fork', force=True)
         t0 = time()
         for epoch in range(args.epoch):
             t1 = time()
@@ -386,7 +410,7 @@ class RecHost:
         self.global_rec_model.load_state_dict(params_avg)
 
     def parallel_local_train(self, user_list):
-        # put data: (serial, user_item, weight, rec_data, pri_data, flag)
+        # put data: (serial, user_item, weight, rec_data, pri_data, flag, noise_demand)
         num_batch = 0
         loss = []
         params = {}
@@ -397,7 +421,8 @@ class RecHost:
             for i in range(j * 64, min((j + 1) * 64, len(user_list))):
                 self.q_to_client.put((user_list[i], copy.deepcopy(self.auxiliary_information),
                                       copy.deepcopy(self.global_rec_model.state_dict()),
-                                      self.data_generator.train_items[user_list[i]], [], 1))
+                                      self.data_generator.train_items[user_list[i]], [], 1,
+                                      bool(self.noise_user_mask[user_list[i]])))
 
             for i in range(j * 64, min((j + 1) * 64, len(user_list))):
                 # get data: (record_loss, record_mf_loss, record_emb_loss), (weight, len_data)
@@ -429,7 +454,7 @@ class RecHost:
                 training_items = []
             self.q_to_client.put((users_to_test[i], self.auxiliary_information,
                                   self.global_rec_model.state_dict(), training_items,
-                                  self.data_generator.test_set[users_to_test[i]], 0))
+                                  self.data_generator.test_set[users_to_test[i]], 0, False))
 
         for _ in range(len(users_to_test)):
             re = self.q_to_server.get()
@@ -474,12 +499,13 @@ def generate_one_client(q_to_client, q_to_server, n_users, n_items, model_initia
 
     while True:
         # in the loop, the user listen to the queue and receive the data and put the data to another queue
-        # get data: (serial, user_item, weight, rec_data, pri_data, flag)
-        serial, auxiliary_information, weight, rec_data, pri_data, flag = q_to_client.get()
+        # get data: (serial, user_item, weight, rec_data, pri_data, flag, noise_demand)
+        serial, auxiliary_information, weight, rec_data, pri_data, flag, noise_demand = q_to_client.get()
         if flag == 1:
             # train
             record_loss, record_mf_loss, record_emb_loss = user_rec.train_parameters(serial, auxiliary_information,
-                                                                                     weight, rec_data, pri_data)
+                                                                                     weight, rec_data, pri_data,
+                                                                                     noise_demand)
             weight, len_data, train_user_item = user_rec.upload_parameters()
             q_to_server.put(((record_loss, record_mf_loss, record_emb_loss), (weight, len_data), train_user_item))
         elif flag == 0:

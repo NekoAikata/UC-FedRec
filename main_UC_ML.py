@@ -1,4 +1,5 @@
 from models import *
+import os
 from utility.load_data import Data, DataGeneratorForTest
 import copy
 import logging
@@ -175,7 +176,7 @@ class RecUser:
         tmp = []
         reindex_age = {'1': 0, '18': 1, '25': 2, '35': 3, '45': 4, '50': 5, '56': 6}
         for i in range(len(self.pri_data_all)):
-            gender = torch.tensor(1 if self.pri_data_all[i]['gender'] is not 'M' else 0, dtype=torch.float32).to(device)
+            gender = torch.tensor(1 if self.pri_data_all[i]['gender'] != 'M' else 0, dtype=torch.float32).to(device)
             age = torch.tensor(reindex_age[self.pri_data_all[i]['age']]).to(device)
             occupation = torch.tensor(int(self.pri_data_all[i]['occupation'])).to(device)
             tmp.append([gender, age, occupation])
@@ -357,7 +358,6 @@ class RecHost:
             p.start()
             process.append(p)
 
-        mp.set_start_method('fork', force=True)
         t0 = time()
         for epoch in range(args.epoch):
             t1 = time()
@@ -596,14 +596,15 @@ def generate_one_client(q_to_client, q_to_server, n_users, n_items, model_initia
             record_loss, record_mf_loss, record_emb_loss = user_rec.train_parameters(serial, auxiliary_information, weight)
             weight, len_data, train_user_item = user_rec.upload_parameters()
             q_to_server.put(((record_loss, record_mf_loss, record_emb_loss), (weight, len_data), train_user_item))
-        except:
-            traceback.print_exc(file='debug.log')
+        except Exception:
+            traceback.print_exc()
             return
 
 
 def main():
     mp.set_start_method('spawn')
     mp.set_sharing_strategy('file_system')
+    os.makedirs(args.log_path, exist_ok=True)
     logging.basicConfig(level=logging.DEBUG,
                         filename=os.path.join(args.log_path, 'Dist_{}_{}.log'.format('no_pri', args.log_name)),
                         filemode='a')

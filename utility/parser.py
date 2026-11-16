@@ -26,7 +26,7 @@ def parse_args():
     parser.add_argument('--pri_epoch', type=int, default=200,
                         help='Number of privacy part epoch')
 
-    parser.add_argument('--embed_size', type=int, default=128,
+    parser.add_argument('--embed_size', type=int, default=64,
                         help='Embedding size.')
     parser.add_argument('--layer_size', nargs='?', default='[128]',
                         help='Output sizes of every layer')
@@ -35,7 +35,7 @@ def parse_args():
 
     parser.add_argument('--regs', nargs='?', default='[1e-5]',
                         help='Regularizations.')
-    parser.add_argument('--lr', type=float, default=0.0001,
+    parser.add_argument('--lr', type=float, default=0.1,
                         help='Learning rate.')
 
     parser.add_argument('--gpu', type=int, default=0,
@@ -59,17 +59,17 @@ def parse_args():
                         help='0: Disable performance report w.r.t. sparsity'
                              ' levels, 1: Show performance report w.r.t. sparsity levels')
 
-    parser.add_argument('--local_epoch', type=int, default=10,
+    parser.add_argument('--local_epoch', type=int, default=5,
                         help='the epoch number for local user model training')
     parser.add_argument('--num_process', type=int, default=4,
                         help='the number of processes for local user simulation')
 
     parser.add_argument('--local_batch_size', type=int, default=256,
                         help='local item batch size for training')
-    parser.add_argument('--user_batch_size', type=int, default=256,
+    parser.add_argument('--user_batch_size', type=int, default=512,
                         help='User batch size for parallel training.')
 
-    parser.add_argument('--num_neighbor', type=int, default=10,
+    parser.add_argument('--num_neighbor', type=int, default=5,
                         help='Specify the number of local rec model neigbor users')
     parser.add_argument('--item_threshold', type=int, default=30, help='Specify the number of predicted item number')
     parser.add_argument('--item_density_threshold', type=float, default=0.01,
@@ -83,9 +83,11 @@ def parse_args():
     parser.add_argument('--log_name', type=str, default='test',
                         help='the name for log file')
 
-    parser.add_argument('--privacy_ratio', type=float, default=0.2,
+    parser.add_argument('--privacy_ratio', type=float, default=0.3,
                         help='the ratio of private attribute')
-    parser.add_argument('--privacy_tradeoff', type=float, default=1,
+    parser.add_argument('--use_mask_noise', action='store_true',
+                        help='Add noise to users selected by any attribute in the privacy mask')
+    parser.add_argument('--privacy_tradeoff', type=float, default=0.5,
                         help='the tradeoff of performance and privacy')
 
     parser.add_argument('--dp_clip', type=float, default=5)

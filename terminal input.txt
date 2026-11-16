@@ -1,0 +1,2 @@
+python privacy_evaluate.py --weights_path model --save_name uc_ee.pkl --dataset ml-1m --gpu 0 --embed_size 64 --layer_size "[128]" --regs "[1e-5]" --num_neighbor 5 --privacy_ratio 0.3
+python main_UC_ML.py --save_name uc_ee.pkl --privacy_ratio 0.3 --epoch 100

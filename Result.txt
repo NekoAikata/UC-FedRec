@@ -1,0 +1,51 @@
+Ratio privacy
+FedRec
+(.venv-gpu) C:\Users\ADMIN\Documents\GitHub\UC-FedRec>python privacy_evaluate.py --weights_path model --save_name fr_ee.pkl --dataset ml-1m --gpu 0 --embed_size 64 --layer_size "[128]" --regs "[1e-5]" --num_neighbor 5 --privacy_ratio 0.3
+n_users=6040, n_items=3952
+n_interactions=1000209
+n_train=994169, n_test=6040, sparsity=0.04190
+gender discriminator prediction auc score: 0.5165062390719268
+
+recall=[0.66987], precision=[0.06699], hit=[0.66987], ndcg=[0.38838]
+
+Ratio 0.3
+(.venv-gpu) C:\Users\ADMIN\Documents\GitHub\UC-FedRec>python privacy_evaluate.py --weights_path model --save_name uc_ee.pkl --dataset ml-1m --gpu 0 --embed_size 64 --layer_size "[128]" --regs "[1e-5]" --num_neighbor 5 --privacy_ratio 0.3
+n_users=6040, n_items=3952
+n_interactions=1000209
+n_train=994169, n_test=6040, sparsity=0.04190
+gender discriminator prediction auc score: 0.5014680169239675
+
+recall=[0.66689], precision=[0.06669], hit=[0.66689], ndcg=[0.38954]
+
+Ratio 0.5
+(.venv-gpu) C:\Users\ADMIN\Documents\GitHub\UC-FedRec>python privacy_evaluate.py --weights_path model --save_name uc_05.pkl --dataset ml-1m --gpu 0 --embed_size 64 --layer_size "[128]" --regs "[1e-5]" --num_neighbor 5 --privacy_ratio 0.5
+n_users=6040, n_items=3952
+n_interactions=1000209
+n_train=994169, n_test=6040, sparsity=0.04190
+gender discriminator prediction auc score: 0.465334510929565
+
+Ratio 1.0
+(.venv-gpu) C:\Users\ADMIN\Documents\GitHub\UC-FedRec>python privacy_evaluate.py --weights_path model --save_name uc_1.pkl --dataset ml-1m --gpu 0 --embed_size 64 --layer_size "[128]" --regs "[1e-5]" --num_neighbor 5 --privacy_ratio 1 
+n_users=6040, n_items=3952
+n_interactions=1000209
+n_train=994169, n_test=6040, sparsity=0.04190
+gender discriminator prediction auc score: 0.47293716768214444
+
+Noise eva
+(.venv-gpu) C:\Users\ADMIN\Documents\GitHub\UC-FedRec>python privacy_evaluate.py --weights_path model --save_name fr_noise.pkl --dataset ml-1m --gpu 0 --embed_size 64 --layer_size "[128]" --regs "[1e-5]" --num_neighbor 5 --privacy_ratio 0.3
+n_users=6040, n_items=3952
+n_interactions=1000209
+n_train=994169, n_test=6040, sparsity=0.04190
+gender discriminator prediction auc score: 0.4994897746056942
+
+recall=[0.18957, 0.18957], precision=[0.01896, 0.01896], hit=[0.18957, 0.18957], ndcg=[0.08316, 0.08316]
+
+Tradeoff eva
+Tradeoff 0.7
+(.venv-gpu) C:\Users\ADMIN\Documents\GitHub\UC-FedRec>python privacy_evaluate.py --weights_path model --save_name uc_ee.pkl --dataset ml-1m --gpu 0 --embed_size 64 --layer_size "[128]" --regs "[1e-5]" --num_neighbor 5 --privacy_ratio 0.3
+n_users=6040, n_items=3952
+n_interactions=1000209
+n_train=994169, n_test=6040, sparsity=0.04190
+gender discriminator prediction auc score: 0.5014680169239675
+
+recall=[0.66689], precision=[0.06669], hit=[0.66689], ndcg=[0.38954]

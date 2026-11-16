@@ -1,0 +1,30 @@
+INFO:root:Namespace(Ks='[10]', batch_size=64, data_path='./data/recommendation/', dataset='ml-1m', dp_clip=5, dp_delta=1e-05, dp_eps=8.0, dp_mechanism='laplace', embed_size=128, epoch=200, gpu=0, item_density_threshold=0.01, item_threshold=30, layer_size=[128], lmbda=1, local_batch_size=256, local_epoch=10, log_name='FR', log_path='./logs/', lr=0.1, mess_dropout=[0.1, 0.1, 0.1], model_name='two_side_graph', num_neighbor=10, num_process=4, pretrain_epoch=300, pri_epoch=200, privacy_protect=False, privacy_ratio=0.3, privacy_tradeoff=1, regs=[1e-05], report=0, save_flag=1, save_name='FedRec.pkl', test_flag='part', user_batch_size=256, verbose=1, weights_path='model/')
+INFO:root:Namespace(Ks='[10]', batch_size=64, data_path='./data/recommendation/', dataset='ml-1m', dp_clip=5, dp_delta=1e-05, dp_eps=8.0, dp_mechanism='laplace', embed_size=128, epoch=200, gpu=0, item_density_threshold=0.01, item_threshold=30, layer_size=[128], lmbda=1, local_batch_size=256, local_epoch=10, log_name='FR', log_path='./logs/', lr=0.1, mess_dropout=[0.1, 0.1, 0.1], model_name='two_side_graph', num_neighbor=10, num_process=4, pretrain_epoch=300, pri_epoch=200, privacy_protect=False, privacy_ratio=0.3, privacy_tradeoff=1, regs=[1e-05], report=0, save_flag=1, save_name='FedRec.pkl', test_flag='part', user_batch_size=256, verbose=1, weights_path='model/')
+INFO:root:Namespace(Ks='[10]', batch_size=64, data_path='./data/recommendation/', dataset='ml-1m', dp_clip=5, dp_delta=1e-05, dp_eps=8.0, dp_mechanism='laplace', embed_size=128, epoch=200, gpu=0, item_density_threshold=0.01, item_threshold=30, layer_size=[128], lmbda=1, local_batch_size=256, local_epoch=10, log_name='FR', log_path='./logs/', lr=0.1, mess_dropout=[0.1, 0.1, 0.1], model_name='two_side_graph', num_neighbor=10, num_process=4, pretrain_epoch=300, pri_epoch=200, privacy_protect=False, privacy_ratio=0.3, privacy_tradeoff=1, regs=[1e-05], report=0, save_flag=1, save_name='FedRec.pkl', test_flag='part', user_batch_size=256, verbose=1, weights_path='model/')
+INFO:root:Epoch 9 [68.8s + 23.1s]: train==[530.61066=530.59497 + 0.01590], recall=[0.63212, 0.63212], precision=[0.06321, 0.06321], hit=[0.63212, 0.63212], ndcg=[0.37606, 0.37606]
+INFO:root:save the weights in path: model/FedRec.pkl
+INFO:root:Epoch 19 [64.9s + 17.9s]: train==[446.81583=446.79938 + 0.01595], recall=[0.65911, 0.65911], precision=[0.06591, 0.06591], hit=[0.65911, 0.65911], ndcg=[0.38746, 0.38746]
+INFO:root:save the weights in path: model/FedRec.pkl
+INFO:root:Epoch 29 [66.9s + 17.6s]: train==[428.42087=428.40536 + 0.01599], recall=[0.65778, 0.65778], precision=[0.06578, 0.06578], hit=[0.65778, 0.65778], ndcg=[0.38485, 0.38485]
+INFO:root:Epoch 39 [65.3s + 17.5s]: train==[430.24936=430.23358 + 0.01604], recall=[0.66026, 0.66026], precision=[0.06603, 0.06603], hit=[0.66026, 0.66026], ndcg=[0.38257, 0.38257]
+INFO:root:save the weights in path: model/FedRec.pkl
+INFO:root:Epoch 49 [67.1s + 16.8s]: train==[413.78748=413.77072 + 0.01610], recall=[0.66606, 0.66606], precision=[0.06661, 0.06661], hit=[0.66606, 0.66606], ndcg=[0.38999, 0.38999]
+INFO:root:save the weights in path: model/FedRec.pkl
+INFO:root:Epoch 59 [67.7s + 16.4s]: train==[425.36118=425.34494 + 0.01618], recall=[0.66391, 0.66391], precision=[0.06639, 0.06639], hit=[0.66391, 0.66391], ndcg=[0.38751, 0.38751]
+INFO:root:Epoch 69 [65.0s + 16.2s]: train==[403.53165=403.51532 + 0.01628], recall=[0.66341, 0.66341], precision=[0.06634, 0.06634], hit=[0.66341, 0.66341], ndcg=[0.38532, 0.38532]
+INFO:root:Epoch 79 [64.8s + 16.3s]: train==[405.19916=405.18286 + 0.01640], recall=[0.66192, 0.66192], precision=[0.06619, 0.06619], hit=[0.66192, 0.66192], ndcg=[0.38550, 0.38550]
+INFO:root:Epoch 89 [63.7s + 16.2s]: train==[398.94858=398.93243 + 0.01654], recall=[0.66126, 0.66126], precision=[0.06613, 0.06613], hit=[0.66126, 0.66126], ndcg=[0.38807, 0.38807]
+INFO:root:Epoch 99 [65.4s + 16.6s]: train==[394.04803=394.03140 + 0.01670], recall=[0.65795, 0.65795], precision=[0.06579, 0.06579], hit=[0.65795, 0.65795], ndcg=[0.38217, 0.38217]
+INFO:root:Epoch 109 [68.4s + 16.0s]: train==[389.19116=389.17410 + 0.01687], recall=[0.66623, 0.66623], precision=[0.06662, 0.06662], hit=[0.66623, 0.66623], ndcg=[0.39138, 0.39138]
+INFO:root:save the weights in path: model/FedRec.pkl
+INFO:root:Epoch 119 [65.2s + 16.3s]: train==[412.61563=412.59885 + 0.01706], recall=[0.66358, 0.66358], precision=[0.06636, 0.06636], hit=[0.66358, 0.66358], ndcg=[0.38810, 0.38810]
+INFO:root:Epoch 129 [67.8s + 16.0s]: train==[400.38614=400.36905 + 0.01729], recall=[0.66060, 0.66060], precision=[0.06606, 0.06606], hit=[0.66060, 0.66060], ndcg=[0.38525, 0.38525]
+INFO:root:Epoch 139 [65.4s + 16.3s]: train==[389.16324=389.14581 + 0.01753], recall=[0.65877, 0.65877], precision=[0.06588, 0.06588], hit=[0.65877, 0.65877], ndcg=[0.38656, 0.38656]
+INFO:root:Epoch 149 [64.7s + 16.4s]: train==[398.08801=398.07065 + 0.01779], recall=[0.66325, 0.66325], precision=[0.06632, 0.06632], hit=[0.66325, 0.66325], ndcg=[0.38895, 0.38895]
+INFO:root:Epoch 159 [63.8s + 16.3s]: train==[380.61581=380.59799 + 0.01809], recall=[0.65960, 0.65960], precision=[0.06596, 0.06596], hit=[0.65960, 0.65960], ndcg=[0.38477, 0.38477]
+INFO:root:Epoch 169 [64.2s + 16.2s]: train==[405.92816=405.90988 + 0.01841], recall=[0.66672, 0.66672], precision=[0.06667, 0.06667], hit=[0.66672, 0.66672], ndcg=[0.38984, 0.38984]
+INFO:root:save the weights in path: model/FedRec.pkl
+INFO:root:Epoch 179 [67.0s + 16.1s]: train==[389.67410=389.65570 + 0.01872], recall=[0.66192, 0.66192], precision=[0.06619, 0.06619], hit=[0.66192, 0.66192], ndcg=[0.38719, 0.38719]
+INFO:root:Epoch 189 [63.9s + 16.1s]: train==[391.43771=391.41855 + 0.01909], recall=[0.66093, 0.66093], precision=[0.06609, 0.06609], hit=[0.66093, 0.66093], ndcg=[0.38748, 0.38748]
+INFO:root:Epoch 199 [66.1s + 16.2s]: train==[380.56232=380.54233 + 0.01947], recall=[0.66474, 0.66474], precision=[0.06647, 0.06647], hit=[0.66474, 0.66474], ndcg=[0.38614, 0.38614]
+INFO:root:Best Iter=[16]@[13046.1]	recall=[0.66672], precision=[0.06667], hit=[0.66672], ndcg=[0.38984]

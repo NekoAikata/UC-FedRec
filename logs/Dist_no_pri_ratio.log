@@ -1,0 +1,32 @@
+INFO:root:Namespace(Ks='[10]', batch_size=64, data_path='./data/recommendation/', dataset='ml-1m', dp_clip=5, dp_delta=1e-05, dp_eps=8.0, dp_mechanism='laplace', embed_size=64, epoch=100, gpu=0, item_density_threshold=0.01, item_threshold=30, layer_size=[128], lmbda=1, local_batch_size=256, local_epoch=5, log_name='ratio', log_path='./logs/', lr=0.1, mess_dropout=[0.1, 0.1, 0.1], model_name='two_side_graph', num_neighbor=5, num_process=4, pretrain_epoch=300, pri_epoch=200, privacy_protect=False, privacy_ratio=0.5, privacy_tradeoff=0.7, regs=[1e-05], report=0, save_flag=1, save_name='uc_05.pkl', test_flag='part', user_batch_size=512, verbose=1, weights_path='model/')
+INFO:root:Epoch 9 [29.9s + 19.1s]: train==[689.62244=689.60614 + 0.01543], recall=[0.26705, 0.26705], precision=[0.02671, 0.02671], hit=[0.26705, 0.26705], ndcg=[0.13128, 0.13128]
+INFO:root:save the weights in path: model/uc_05.pkl
+INFO:root:Epoch 19 [31.5s + 19.5s]: train==[671.05750=671.04205 + 0.01544], recall=[0.43328, 0.43328], precision=[0.04333, 0.04333], hit=[0.43328, 0.43328], ndcg=[0.24260, 0.24260]
+INFO:root:save the weights in path: model/uc_05.pkl
+INFO:root:Epoch 29 [33.4s + 20.2s]: train==[525.80627=525.79095 + 0.01546], recall=[0.61954, 0.61954], precision=[0.06195, 0.06195], hit=[0.61954, 0.61954], ndcg=[0.36462, 0.36462]
+INFO:root:save the weights in path: model/uc_05.pkl
+INFO:root:Epoch 39 [29.0s + 19.7s]: train==[435.59174=435.57657 + 0.01547], recall=[0.66175, 0.66175], precision=[0.06618, 0.06618], hit=[0.66175, 0.66175], ndcg=[0.38408, 0.38408]
+INFO:root:save the weights in path: model/uc_05.pkl
+INFO:root:Epoch 49 [31.1s + 19.5s]: train==[414.16074=414.14532 + 0.01548], recall=[0.66341, 0.66341], precision=[0.06634, 0.06634], hit=[0.66341, 0.66341], ndcg=[0.38546, 0.38546]
+INFO:root:save the weights in path: model/uc_05.pkl
+INFO:root:Epoch 59 [29.6s + 19.5s]: train==[402.30533=402.28973 + 0.01549], recall=[0.67020, 0.67020], precision=[0.06702, 0.06702], hit=[0.67020, 0.67020], ndcg=[0.38860, 0.38860]
+INFO:root:save the weights in path: model/uc_05.pkl
+INFO:root:Epoch 69 [30.8s + 18.7s]: train==[395.60782=395.59283 + 0.01551], recall=[0.66358, 0.66358], precision=[0.06636, 0.06636], hit=[0.66358, 0.66358], ndcg=[0.38787, 0.38787]
+INFO:root:Namespace(Ks='[10]', batch_size=64, data_path='./data/recommendation/', dataset='ml-1m', dp_clip=5, dp_delta=1e-05, dp_eps=8.0, dp_mechanism='laplace', embed_size=64, epoch=100, gpu=0, item_density_threshold=0.01, item_threshold=30, layer_size=[128], lmbda=1, local_batch_size=256, local_epoch=5, log_name='ratio', log_path='./logs/', lr=0.1, mess_dropout=[0.1, 0.1, 0.1], model_name='two_side_graph', num_neighbor=5, num_process=4, pretrain_epoch=300, pri_epoch=200, privacy_protect=True, privacy_ratio=1, privacy_tradeoff=0.7, regs=[1e-05], report=0, save_flag=1, save_name='uc_1.pkl', test_flag='part', user_batch_size=512, verbose=1, weights_path='model/')
+INFO:root:Epoch 9 [42.2s + 19.8s]: train==[689.69208=689.67590 + 0.01543], recall=[0.31159, 0.31159], precision=[0.03116, 0.03116], hit=[0.31159, 0.31159], ndcg=[0.15009, 0.15009]
+INFO:root:save the weights in path: model/uc_1.pkl
+INFO:root:Epoch 19 [46.0s + 19.6s]: train==[675.31635=675.30133 + 0.01543], recall=[0.45944, 0.45944], precision=[0.04594, 0.04594], hit=[0.45944, 0.45944], ndcg=[0.26069, 0.26069]
+INFO:root:save the weights in path: model/uc_1.pkl
+INFO:root:Epoch 29 [44.9s + 20.3s]: train==[528.54816=528.53265 + 0.01545], recall=[0.63709, 0.63709], precision=[0.06371, 0.06371], hit=[0.63709, 0.63709], ndcg=[0.37604, 0.37604]
+INFO:root:save the weights in path: model/uc_1.pkl
+INFO:root:Epoch 39 [48.5s + 21.0s]: train==[438.19885=438.18347 + 0.01546], recall=[0.66291, 0.66291], precision=[0.06629, 0.06629], hit=[0.66291, 0.66291], ndcg=[0.38546, 0.38546]
+INFO:root:save the weights in path: model/uc_1.pkl
+INFO:root:Epoch 49 [49.0s + 19.6s]: train==[413.92493=413.90936 + 0.01547], recall=[0.65977, 0.65977], precision=[0.06598, 0.06598], hit=[0.65977, 0.65977], ndcg=[0.38590, 0.38590]
+INFO:root:Epoch 59 [48.9s + 19.7s]: train==[402.67654=402.66153 + 0.01547], recall=[0.66672, 0.66672], precision=[0.06667, 0.06667], hit=[0.66672, 0.66672], ndcg=[0.38498, 0.38498]
+INFO:root:save the weights in path: model/uc_1.pkl
+INFO:root:Epoch 69 [43.9s + 20.0s]: train==[397.04349=397.02774 + 0.01549], recall=[0.66407, 0.66407], precision=[0.06641, 0.06641], hit=[0.66407, 0.66407], ndcg=[0.38529, 0.38529]
+INFO:root:Epoch 79 [50.8s + 18.9s]: train==[393.77335=393.75778 + 0.01550], recall=[0.66987, 0.66987], precision=[0.06699, 0.06699], hit=[0.66987, 0.66987], ndcg=[0.38689, 0.38689]
+INFO:root:save the weights in path: model/uc_1.pkl
+INFO:root:Epoch 89 [43.3s + 25.6s]: train==[392.18921=392.17374 + 0.01552], recall=[0.66325, 0.66325], precision=[0.06632, 0.06632], hit=[0.66325, 0.66325], ndcg=[0.38576, 0.38576]
+INFO:root:Epoch 99 [44.0s + 19.4s]: train==[386.91055=386.89447 + 0.01555], recall=[0.66291, 0.66291], precision=[0.06629, 0.06629], hit=[0.66291, 0.66291], ndcg=[0.38609, 0.38609]
+INFO:root:Best Iter=[7]@[4701.0]	recall=[0.66987], precision=[0.06699], hit=[0.66987], ndcg=[0.38689]

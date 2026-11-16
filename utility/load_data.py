@@ -179,43 +179,29 @@ class Data(object):
             self.n_train, self.n_test, (self.n_train + self.n_test) / (self.n_users * self.n_items)))
 
 
-def process_data_ml_1m():
-    path = '../data/recommendation/ml-1m/'
-    f_train = open(os.path.join(path, 'train.txt'), 'w')
-    f_test = open(os.path.join(path, 'test.txt'), 'w')
-    tmp_user = 1
-    tmp_item_train = []
-    tmp_item_test = []
-    latest_time_stamp = 0
-    tmp = 0
-    with open(os.path.join(path, 'ratings.dat')) as f1:
-        for text in f1:
-            user_id, movie_id, rating, timestamp = [int(_) for _ in text.split('::')]
-            if user_id == tmp_user:
-                if latest_time_stamp < timestamp:
-                    tmp = str(movie_id-1)
-                    latest_time_stamp = timestamp
-                tmp_item_train.append(str(movie_id - 1))
+def process_data_ml_1m(path):
+    user_ratings = {}
+    with open(os.path.join(path, 'ratings.dat')) as ratings_file:
+        for line in ratings_file:
+            user_id, movie_id, _, timestamp = [int(value) for value in line.split('::')]
+            movie_id -= 1
+            if user_id not in user_ratings:
+                user_ratings[user_id] = ([], timestamp, movie_id)
+                continue
+
+            train_items, latest_timestamp, latest_item = user_ratings[user_id]
+            if timestamp > latest_timestamp:
+                train_items.append(latest_item)
+                user_ratings[user_id] = (train_items, timestamp, movie_id)
             else:
-                tmp_item_train.remove(tmp)
-                tmp_item_test.append(tmp)
-                text_train = str(tmp_user - 1) + ' ' + ' '.join(tmp_item_train)
-                text_test = str(tmp_user - 1) + ' ' + ' '.join(tmp_item_test)
-                if len(text_train) > 1:
-                    f_train.writelines(text_train + '\n')
-                if len(text_test) > 1:
-                    f_test.writelines(text_test + '\n')
-                tmp_user += 1
-                tmp_item_train = []
-                tmp_item_test = []
-    text_train = str(tmp_user - 1) + ' ' + ' '.join(tmp_item_train)
-    text_test = str(tmp_user - 1) + ' ' + ' '.join(tmp_item_test)
-    if len(text_train) > 1:
-        f_train.writelines(text_train + '\n')
-    if len(text_test) > 1:
-        f_test.writelines(text_test + '\n')
-    f_train.close()
-    f_test.close()
+                train_items.append(movie_id)
+
+    with open(os.path.join(path, 'train.txt'), 'w') as train_file, \
+            open(os.path.join(path, 'test.txt'), 'w') as test_file:
+        for user_id in sorted(user_ratings):
+            train_items, _, test_item = user_ratings[user_id]
+            train_file.write('{} {}\n'.format(user_id - 1, ' '.join(map(str, train_items))))
+            test_file.write('{} {}\n'.format(user_id - 1, test_item))
 
 
 def process_data_douban_book():
