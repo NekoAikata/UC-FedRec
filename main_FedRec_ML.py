@@ -67,6 +67,8 @@ class RecUser:
         # emb_loss += batch_emb_loss.detach().cpu()
         # if not np.all(self.pri_demand == 0):
         #     self.add_noise(self.model)
+        if noise_demand:
+            self.add_noise(self.model)
 
         self.train_user_update(serial)
         self.train_item = list(set(self.train_item))
@@ -493,6 +495,7 @@ def generate_one_client(q_to_client, q_to_server, n_users, n_items, model_initia
 def main():
     mp.set_start_method('spawn')
     mp.set_sharing_strategy('file_system')
+    os.makedirs(args.log_path, exist_ok=True)
     logging.basicConfig(level=logging.DEBUG,
                         filename=os.path.join(args.log_path, 'Dist_{}_{}.log'.format('no_pri', args.log_name)),
                         filemode='a')

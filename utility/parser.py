@@ -8,7 +8,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Run NGCF.")
     parser.add_argument('--weights_path', nargs='?', default='model/',
                         help='Store model path.')
-    parser.add_argument('--log_path', nargs='?', default='/home/qhuaf/graph_pri/logs/',
+    parser.add_argument('--log_path', nargs='?', default='./logs/',
                         help='Store log path')
     parser.add_argument('--data_path', nargs='?', default='./data/recommendation/',
                         help='Input data path.')

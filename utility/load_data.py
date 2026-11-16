@@ -10,8 +10,16 @@ class Data(object):
         self.path = path
         self.batch_size = batch_size
 
-        train_file = path + '/train.txt'
-        test_file = path + '/test.txt'
+        train_file = os.path.join(path, 'train.txt')
+        test_file = os.path.join(path, 'test.txt')
+
+        missing_files = [file for file in (train_file, test_file) if not os.path.isfile(file)]
+        if len(missing_files) == 2 and dataset == 'ml-1m' and os.path.isfile(os.path.join(path, 'ratings.dat')):
+            print('Generating train.txt and test.txt from ratings.dat...')
+            process_data_ml_1m(path)
+            missing_files = [file for file in (train_file, test_file) if not os.path.isfile(file)]
+        if missing_files:
+            raise FileNotFoundError('Missing dataset file(s): {}'.format(', '.join(missing_files)))
 
         self.dataset = dataset
 
