@@ -38,7 +38,7 @@ class RecUser:
         self.dp_delta = args.dp_delta
         self.dp_mechanism = args.dp_mechanism
 
-        if args.dataset == 'ml-1m':
+        if args.dataset in ('ml-1m', 'ml-10k'):
             self.gender_discriminator = GenderDiscriminator(args.embed_size + sum(args.layer_size)).to(device)
             self.age_discriminator = AgeDiscriminator(args.embed_size + sum(args.layer_size)).to(device)
             self.occupation_discriminator = OccupationDiscriminator(args.embed_size + sum(args.layer_size)).to(device)
@@ -275,10 +275,14 @@ class RecHost:
         data_generator_for_test = DataGeneratorForTest(data_generator)
         self.tester = Tester(data_generator_for_test, args)
         # initialize the multiprocess type
-        if not os.path.exists('./data/recommendation/ml-1m/private_user_mask_{}.npy'.format(args.privacy_ratio)):
-            PrivacySettingGeneration('./data/recommendation/ml-1m/', 1024, p_random=args.privacy_ratio)
+        dataset_path = os.path.join(args.data_path, args.dataset)
+        privacy_mask_path = os.path.join(
+            dataset_path, 'private_user_mask_{}.npy'.format(args.privacy_ratio)
+        )
+        if not os.path.exists(privacy_mask_path):
+            PrivacySettingGeneration(dataset_path, 1024, p_random=args.privacy_ratio)
             print('New private information generated!')
-        self.private_user_information = np.load('./data/recommendation/ml-1m/private_user_mask_{}.npy'.format(args.privacy_ratio))
+        self.private_user_information = np.load(privacy_mask_path)
 
 
         # generate the communication tunnel

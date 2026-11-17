@@ -14,7 +14,8 @@ class Data(object):
         test_file = os.path.join(path, 'test.txt')
 
         missing_files = [file for file in (train_file, test_file) if not os.path.isfile(file)]
-        if len(missing_files) == 2 and dataset == 'ml-1m' and os.path.isfile(os.path.join(path, 'ratings.dat')):
+        if len(missing_files) == 2 and dataset in ('ml-1m', 'ml-10k') \
+                and os.path.isfile(os.path.join(path, 'ratings.dat')):
             print('Generating train.txt and test.txt from ratings.dat...')
             process_data_ml_1m(path)
             missing_files = [file for file in (train_file, test_file) if not os.path.isfile(file)]
@@ -154,7 +155,7 @@ class Data(object):
     def get_user_feature(self):
         users_features = []
         with open(os.path.join(self.path, 'users.dat')) as f:
-            if self.dataset == 'ml-1m':
+            if self.dataset in ('ml-1m', 'ml-10k'):
                 for text in f:
                     id_, gender, age, occupation, _ = text.split('::')
                     users_features.append({

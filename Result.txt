@@ -40,12 +40,38 @@ gender discriminator prediction auc score: 0.4994897746056942
 
 recall=[0.18957, 0.18957], precision=[0.01896, 0.01896], hit=[0.18957, 0.18957], ndcg=[0.08316, 0.08316]
 
-Tradeoff eva
-Tradeoff 0.7
-(.venv-gpu) C:\Users\ADMIN\Documents\GitHub\UC-FedRec>python privacy_evaluate.py --weights_path model --save_name uc_ee.pkl --dataset ml-1m --gpu 0 --embed_size 64 --layer_size "[128]" --regs "[1e-5]" --num_neighbor 5 --privacy_ratio 0.3
-n_users=6040, n_items=3952
-n_interactions=1000209
-n_train=994169, n_test=6040, sparsity=0.04190
-gender discriminator prediction auc score: 0.5014680169239675
 
-recall=[0.66689], precision=[0.06669], hit=[0.66689], ndcg=[0.38954]
+
+Tradeoff
+0
+Best Iter=[7]@[472.2]   recall=[0.40930], precision=[0.04093], hit=[0.40930], ndcg=[0.20750]
+
+0.3
+Best Iter=[8]@[459.6]	recall=[0.40637], precision=[0.04064], hit=[0.40637], ndcg=[0.20341]
+
+0.5
+Best Iter=[8]@[469.9]	recall=[0.40511], precision=[0.04051], hit=[0.40511], ndcg=[0.20415]
+
+0.7
+Best Iter=[7]@[479.3]	recall=[0.39925], precision=[0.03992], hit=[0.39925], ndcg=[0.20024]
+
+FedRec
+(.venv-gpu) C:\Users\ADMIN\Documents\GitHub\UC-FedRec>python privacy_evaluate.py --save_name fr_10k.pkl --log_name ml10k_run --privacy_ratio 0.3 
+n_users=2387, n_items=2326
+n_interactions=10000
+n_train=7613, n_test=2387, sparsity=0.00180
+gender discriminator prediction auc score: 0.5432628524046434
+
+Ratio 0.3
+(.venv-gpu) C:\Users\ADMIN\Documents\GitHub\UC-FedRec>python privacy_evaluate.py --save_name model_ml10k_a03.pkl --log_name ml10k_run --privacy_ratio 0.3
+n_users=2387, n_items=2326
+n_interactions=10000
+n_train=7613, n_test=2387, sparsity=0.00180
+gender discriminator prediction auc score: 0.5150290215588723
+
+Ratio 1.0
+(.venv-gpu) C:\Users\ADMIN\Documents\GitHub\UC-FedRec>python privacy_evaluate.py --save_name model_ml10k_a03.pkl --log_name ml10k_run --privacy_ratio 1  
+n_users=2387, n_items=2326
+n_interactions=10000
+n_train=7613, n_test=2387, sparsity=0.00180
+gender discriminator prediction auc score: 0.4560116086235489

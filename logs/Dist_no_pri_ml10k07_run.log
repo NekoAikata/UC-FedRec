@@ -1,0 +1,56 @@
+INFO:root:Namespace(Ks='[10]', batch_size=64, data_path='./data/recommendation/', dataset='ml-10k', dp_clip=5, dp_delta=1e-05, dp_eps=8.0, dp_mechanism='laplace', embed_size=64, epoch=200, gpu=0, item_density_threshold=0.01, item_threshold=30, layer_size=[64], lmbda=1, local_batch_size=128, local_epoch=3, log_name='ml10k07_run', log_path='./logs/', lr=0.001, mess_dropout=[0.1, 0.1, 0.1], model_name='two_side_graph', num_neighbor=5, num_process=4, pretrain_epoch=30, pri_epoch=50, privacy_protect=False, privacy_ratio=0.3, privacy_tradeoff=0.7, regs=[0.0001], report=0, save_flag=1, save_name='model_ml10k.pkl', test_flag='part', use_mask_noise=False, user_batch_size=128, verbose=1, weights_path='model/')
+INFO:root:Epoch 9 [5.4s + 8.3s]: train==[692.92914=692.77148 + 0.15799], recall=[0.19648, 0.19648], precision=[0.01965, 0.01965], hit=[0.19648, 0.19648], ndcg=[0.08991, 0.08991]
+INFO:root:save the weights in path: model/model_ml10k.pkl
+INFO:root:Epoch 19 [5.7s + 8.8s]: train==[692.87860=692.71997 + 0.15799], recall=[0.20570, 0.20570], precision=[0.02057, 0.02057], hit=[0.20570, 0.20570], ndcg=[0.08974, 0.08974]
+INFO:root:save the weights in path: model/model_ml10k.pkl
+INFO:root:Epoch 29 [5.4s + 6.7s]: train==[692.85925=692.70215 + 0.15799], recall=[0.19145, 0.19145], precision=[0.01915, 0.01915], hit=[0.19145, 0.19145], ndcg=[0.08542, 0.08542]
+INFO:root:Epoch 39 [5.5s + 7.0s]: train==[692.55530=692.39886 + 0.15799], recall=[0.19481, 0.19481], precision=[0.01948, 0.01948], hit=[0.19481, 0.19481], ndcg=[0.08782, 0.08782]
+INFO:root:Epoch 49 [5.1s + 6.8s]: train==[692.36426=692.20673 + 0.15799], recall=[0.19564, 0.19564], precision=[0.01956, 0.01956], hit=[0.19564, 0.19564], ndcg=[0.08861, 0.08861]
+INFO:root:Epoch 59 [5.4s + 6.9s]: train==[692.24915=692.09125 + 0.15799], recall=[0.19690, 0.19690], precision=[0.01969, 0.01969], hit=[0.19690, 0.19690], ndcg=[0.08932, 0.08932]
+INFO:root:Epoch 69 [5.3s + 6.9s]: train==[692.17334=692.01526 + 0.15799], recall=[0.19858, 0.19858], precision=[0.01986, 0.01986], hit=[0.19858, 0.19858], ndcg=[0.08830, 0.08830]
+INFO:root:Epoch 79 [5.5s + 6.9s]: train==[692.05365=691.89539 + 0.15799], recall=[0.19858, 0.19858], precision=[0.01986, 0.01986], hit=[0.19858, 0.19858], ndcg=[0.08825, 0.08825]
+INFO:root:Epoch 89 [5.4s + 6.9s]: train==[691.95825=691.80109 + 0.15799], recall=[0.20193, 0.20193], precision=[0.02019, 0.02019], hit=[0.20193, 0.20193], ndcg=[0.09095, 0.09095]
+INFO:root:Namespace(Ks='[10]', batch_size=64, data_path='./data/recommendation/', dataset='ml-10k', dp_clip=5, dp_delta=1e-05, dp_eps=8.0, dp_mechanism='laplace', embed_size=64, epoch=100, gpu=0, item_density_threshold=0.01, item_threshold=30, layer_size=[64], lmbda=1, local_batch_size=128, local_epoch=3, log_name='ml10k07_run', log_path='./logs/', lr=0.1, mess_dropout=[0.1, 0.1, 0.1], model_name='two_side_graph', num_neighbor=5, num_process=4, pretrain_epoch=30, pri_epoch=50, privacy_protect=False, privacy_ratio=0.3, privacy_tradeoff=0.7, regs=[0.0001], report=0, save_flag=1, save_name='model_ml10k.pkl', test_flag='part', use_mask_noise=False, user_batch_size=128, verbose=1, weights_path='model/')
+INFO:root:Epoch 9 [5.8s + 8.5s]: train==[671.37793=671.21985 + 0.15853], recall=[0.24969, 0.24969], precision=[0.02497, 0.02497], hit=[0.24969, 0.24969], ndcg=[0.12384, 0.12384]
+INFO:root:save the weights in path: model/model_ml10k.pkl
+INFO:root:Epoch 19 [5.4s + 9.6s]: train==[604.21259=604.05408 + 0.15954], recall=[0.33389, 0.33389], precision=[0.03339, 0.03339], hit=[0.33389, 0.33389], ndcg=[0.16946, 0.16946]
+INFO:root:save the weights in path: model/model_ml10k.pkl
+INFO:root:Epoch 29 [5.5s + 9.3s]: train==[550.43542=550.27460 + 0.16060], recall=[0.36908, 0.36908], precision=[0.03691, 0.03691], hit=[0.36908, 0.36908], ndcg=[0.18962, 0.18962]
+INFO:root:save the weights in path: model/model_ml10k.pkl
+INFO:root:Epoch 39 [5.3s + 8.4s]: train==[520.12976=519.96906 + 0.16155], recall=[0.37704, 0.37704], precision=[0.03770, 0.03770], hit=[0.37704, 0.37704], ndcg=[0.18901, 0.18901]
+INFO:root:save the weights in path: model/model_ml10k.pkl
+INFO:root:Epoch 49 [5.2s + 8.4s]: train==[492.41681=492.25424 + 0.16240], recall=[0.38961, 0.38961], precision=[0.03896, 0.03896], hit=[0.38961, 0.38961], ndcg=[0.19340, 0.19340]
+INFO:root:save the weights in path: model/model_ml10k.pkl
+INFO:root:Epoch 59 [5.1s + 8.5s]: train==[476.97528=476.81253 + 0.16326], recall=[0.38081, 0.38081], precision=[0.03808, 0.03808], hit=[0.38081, 0.38081], ndcg=[0.19430, 0.19430]
+INFO:root:Epoch 69 [5.4s + 8.6s]: train==[463.89130=463.72696 + 0.16406], recall=[0.38835, 0.38835], precision=[0.03884, 0.03884], hit=[0.38835, 0.38835], ndcg=[0.19696, 0.19696]
+INFO:root:Epoch 79 [5.6s + 8.8s]: train==[453.05276=452.88782 + 0.16484], recall=[0.39925, 0.39925], precision=[0.03992, 0.03992], hit=[0.39925, 0.39925], ndcg=[0.20024, 0.20024]
+INFO:root:save the weights in path: model/model_ml10k.pkl
+INFO:root:Epoch 89 [5.4s + 8.6s]: train==[442.71951=442.55356 + 0.16567], recall=[0.39757, 0.39757], precision=[0.03976, 0.03976], hit=[0.39757, 0.39757], ndcg=[0.19869, 0.19869]
+INFO:root:Epoch 99 [5.4s + 8.4s]: train==[434.93927=434.77255 + 0.16650], recall=[0.39506, 0.39506], precision=[0.03951, 0.03951], hit=[0.39506, 0.39506], ndcg=[0.19882, 0.19882]
+INFO:root:Best Iter=[7]@[479.3]	recall=[0.39925], precision=[0.03992], hit=[0.39925], ndcg=[0.20024]
+INFO:root:Namespace(Ks='[10]', batch_size=64, data_path='./data/recommendation/', dataset='ml-10k', dp_clip=5, dp_delta=1e-05, dp_eps=8.0, dp_mechanism='laplace', embed_size=64, epoch=200, gpu=0, item_density_threshold=0.01, item_threshold=30, layer_size=[64], lmbda=1, local_batch_size=128, local_epoch=3, log_name='ml10k07_run', log_path='./logs/', lr=0.1, mess_dropout=[0.1, 0.1, 0.1], model_name='two_side_graph', num_neighbor=5, num_process=4, pretrain_epoch=30, pri_epoch=50, privacy_protect=False, privacy_ratio=0.3, privacy_tradeoff=0.7, regs=[0.0001], report=0, save_flag=1, save_name='model_ml10k_test.pkl', test_flag='part', use_mask_noise=False, user_batch_size=128, verbose=1, weights_path='model/')
+INFO:root:Epoch 9 [5.5s + 8.3s]: train==[677.82654=677.66876 + 0.15844], recall=[0.22832, 0.22832], precision=[0.02283, 0.02283], hit=[0.22832, 0.22832], ndcg=[0.11243, 0.11243]
+INFO:root:save the weights in path: model/model_ml10k_test.pkl
+INFO:root:Epoch 19 [5.2s + 8.5s]: train==[623.70374=623.54376 + 0.15942], recall=[0.29158, 0.29158], precision=[0.02916, 0.02916], hit=[0.29158, 0.29158], ndcg=[0.14928, 0.14928]
+INFO:root:save the weights in path: model/model_ml10k_test.pkl
+INFO:root:Epoch 29 [5.2s + 9.0s]: train==[558.22687=558.06537 + 0.16058], recall=[0.34688, 0.34688], precision=[0.03469, 0.03469], hit=[0.34688, 0.34688], ndcg=[0.17541, 0.17541]
+INFO:root:save the weights in path: model/model_ml10k_test.pkl
+INFO:root:Epoch 39 [5.4s + 9.8s]: train==[522.12726=521.96558 + 0.16154], recall=[0.36741, 0.36741], precision=[0.03674, 0.03674], hit=[0.36741, 0.36741], ndcg=[0.18919, 0.18919]
+INFO:root:save the weights in path: model/model_ml10k_test.pkl
+INFO:root:Epoch 49 [5.6s + 7.2s]: train==[492.41824=492.25610 + 0.16247], recall=[0.39296, 0.39296], precision=[0.03930, 0.03930], hit=[0.39296, 0.39296], ndcg=[0.19793, 0.19793]
+INFO:root:save the weights in path: model/model_ml10k_test.pkl
+INFO:root:Epoch 59 [5.2s + 7.0s]: train==[473.42722=473.26456 + 0.16333], recall=[0.40050, 0.40050], precision=[0.04005, 0.04005], hit=[0.40050, 0.40050], ndcg=[0.19916, 0.19916]
+INFO:root:save the weights in path: model/model_ml10k_test.pkl
+INFO:root:Epoch 69 [5.5s + 7.0s]: train==[460.27255=460.10843 + 0.16413], recall=[0.39715, 0.39715], precision=[0.03972, 0.03972], hit=[0.39715, 0.39715], ndcg=[0.19922, 0.19922]
+INFO:root:Epoch 79 [5.3s + 6.9s]: train==[450.12268=449.95789 + 0.16489], recall=[0.39841, 0.39841], precision=[0.03984, 0.03984], hit=[0.39841, 0.39841], ndcg=[0.20220, 0.20220]
+INFO:root:Epoch 89 [5.6s + 7.2s]: train==[440.04874=439.88287 + 0.16572], recall=[0.40637, 0.40637], precision=[0.04064, 0.04064], hit=[0.40637, 0.40637], ndcg=[0.20340, 0.20340]
+INFO:root:save the weights in path: model/model_ml10k_test.pkl
+INFO:root:Epoch 99 [5.6s + 6.8s]: train==[430.83609=430.66980 + 0.16653], recall=[0.40260, 0.40260], precision=[0.04026, 0.04026], hit=[0.40260, 0.40260], ndcg=[0.20243, 0.20243]
+INFO:root:Epoch 109 [5.0s + 7.2s]: train==[426.75876=426.59116 + 0.16733], recall=[0.40846, 0.40846], precision=[0.04085, 0.04085], hit=[0.40846, 0.40846], ndcg=[0.20231, 0.20231]
+INFO:root:save the weights in path: model/model_ml10k_test.pkl
+INFO:root:Epoch 119 [5.3s + 7.1s]: train==[420.94125=420.77289 + 0.16821], recall=[0.41098, 0.41098], precision=[0.04110, 0.04110], hit=[0.41098, 0.41098], ndcg=[0.20431, 0.20431]
+INFO:root:save the weights in path: model/model_ml10k_test.pkl
+INFO:root:Epoch 129 [5.4s + 8.2s]: train==[414.49951=414.33051 + 0.16901], recall=[0.40469, 0.40469], precision=[0.04047, 0.04047], hit=[0.40469, 0.40469], ndcg=[0.20501, 0.20501]
+INFO:root:Epoch 139 [5.4s + 6.7s]: train==[410.17773=410.00766 + 0.16988], recall=[0.40427, 0.40427], precision=[0.04043, 0.04043], hit=[0.40427, 0.40427], ndcg=[0.20045, 0.20045]
+INFO:root:Epoch 149 [5.1s + 10.0s]: train==[407.77161=407.60123 + 0.17081], recall=[0.39631, 0.39631], precision=[0.03963, 0.03963], hit=[0.39631, 0.39631], ndcg=[0.20022, 0.20022]
+INFO:root:Epoch 159 [5.2s + 7.2s]: train==[404.73892=404.56732 + 0.17180], recall=[0.39757, 0.39757], precision=[0.03976, 0.03976], hit=[0.39757, 0.39757], ndcg=[0.20045, 0.20045]

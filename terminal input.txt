@@ -1,2 +1,5 @@
 python privacy_evaluate.py --weights_path model --save_name uc_ee.pkl --dataset ml-1m --gpu 0 --embed_size 64 --layer_size "[128]" --regs "[1e-5]" --num_neighbor 5 --privacy_ratio 0.3
-python main_UC_ML.py --save_name uc_ee.pkl --privacy_ratio 0.3 --epoch 100
+python main_UC_ML.py --save_name uc_t03.pkl --privacy_tradeoff 0.3 --epoch 100
+python main_UC_ML.py --dataset ml-10k --lr 0.001 --embed_size 64 --layer_size "[64]" --epoch 200 --pretrain_epoch 30 --pri_epoch 50 --local_epoch 3 --regs "[1e-4]" --num_neighbor 5 --user_batch_size 128 --local_batch_size 128 --privacy_tradeoff 0.5 --save_name model_ml10k.pkl --log_name ml10k_run
+python privacy_evaluate.py --dataset ml-10k --layer_size "[64]" --pretrain_epoch 30 --pri_epoch 50 --local_epoch 3 --regs "[1e-4]" --num_neighbor 5 --user_batch_size 128 --local_batch_size 128 --privacy_tradeoff 0.7 --save_name model_ml10k.pkl  
+python main_UC_ML.py --save_name model_ml10k_a03.pkl --log_name ml10k_run --privacy_ratio 0.3

@@ -17,23 +17,23 @@ def parse_args():
     parser.add_argument('--save_name', type=str, default='model.pkl',
                         help='saved model name')
 
-    parser.add_argument('--dataset', nargs='?', default='ml-1m',
-                        help='Choose a dataset from {ml-1m, douban}')
+    parser.add_argument('--dataset', nargs='?', default='ml-10k',
+                        help='Choose a dataset from {ml-1m, ml-10k, douban}')
     parser.add_argument('--verbose', type=int, default=1,
                         help='Interval of evaluation.')
-    parser.add_argument('--epoch', type=int, default=2000,
+    parser.add_argument('--epoch', type=int, default=100,
                         help='Number of epoch.')
-    parser.add_argument('--pri_epoch', type=int, default=200,
+    parser.add_argument('--pri_epoch', type=int, default=50,
                         help='Number of privacy part epoch')
 
     parser.add_argument('--embed_size', type=int, default=64,
                         help='Embedding size.')
-    parser.add_argument('--layer_size', nargs='?', default='[128]',
+    parser.add_argument('--layer_size', nargs='?', default='[64]',
                         help='Output sizes of every layer')
 
     parser.add_argument('--batch_size', type=int, default=64, help='Batch size')
 
-    parser.add_argument('--regs', nargs='?', default='[1e-5]',
+    parser.add_argument('--regs', nargs='?', default='[1e-4]',
                         help='Regularizations.')
     parser.add_argument('--lr', type=float, default=0.1,
                         help='Learning rate.')
@@ -59,14 +59,14 @@ def parse_args():
                         help='0: Disable performance report w.r.t. sparsity'
                              ' levels, 1: Show performance report w.r.t. sparsity levels')
 
-    parser.add_argument('--local_epoch', type=int, default=5,
+    parser.add_argument('--local_epoch', type=int, default=3,
                         help='the epoch number for local user model training')
     parser.add_argument('--num_process', type=int, default=4,
                         help='the number of processes for local user simulation')
 
-    parser.add_argument('--local_batch_size', type=int, default=256,
+    parser.add_argument('--local_batch_size', type=int, default=128,
                         help='local item batch size for training')
-    parser.add_argument('--user_batch_size', type=int, default=512,
+    parser.add_argument('--user_batch_size', type=int, default=128,
                         help='User batch size for parallel training.')
 
     parser.add_argument('--num_neighbor', type=int, default=5,
@@ -74,7 +74,7 @@ def parse_args():
     parser.add_argument('--item_threshold', type=int, default=30, help='Specify the number of predicted item number')
     parser.add_argument('--item_density_threshold', type=float, default=0.01,
                         help='Specify the density of predicted item')
-    parser.add_argument('--pretrain_epoch', type=int, default=300,
+    parser.add_argument('--pretrain_epoch', type=int, default=30,
                         help='the number of epochs for pretraining')
     parser.add_argument('--privacy_protect', type=bool, default=False,
                         help='Whether enable the privacy protection')
